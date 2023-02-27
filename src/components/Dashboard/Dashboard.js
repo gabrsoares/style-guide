@@ -84,7 +84,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 
 const mdTheme = createTheme();
 
-function DashboardContent() {
+function DashboardContent(props) {
   const [open, setOpen] = React.useState(true);
   const toggleDrawer = () => {
     setOpen(!open);
@@ -119,7 +119,7 @@ function DashboardContent() {
               noWrap
               sx={{ flexGrow: 1 }}
             >
-              Dashboard
+              {props.title}
             </Typography>
             <IconButton color="inherit">
               <Badge badgeContent={4} color="secondary">
@@ -174,7 +174,6 @@ function DashboardContent() {
                   }}
                 >
                   <Chart />
-                  <BasicAlerts type="warning"> Olá </BasicAlerts>
                 </Paper>
               </Grid>
               {/* Recent Deposits */}
@@ -205,6 +204,6 @@ function DashboardContent() {
   );
 }
 
-export default function Dashboard() {
-  return <DashboardContent />;
+export default function Dashboard(props) {
+  return <DashboardContent title={props.title} />;
 }
